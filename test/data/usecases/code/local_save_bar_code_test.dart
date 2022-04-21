@@ -1,7 +1,7 @@
 import 'package:barcode_reader/data/local_database/local_database.dart';
-import 'package:barcode_reader/data/local_database/local_database_error.dart';
 import 'package:barcode_reader/data/usecases/code/code.dart';
 import 'package:barcode_reader/domain/entities/entities.dart';
+import 'package:barcode_reader/domain/error/domain_error.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -21,7 +21,7 @@ void main() {
   late final CodeEntity mockCodeEntity;
 
   setUpAll(() {
-    mockCodeEntity = CodeEntity(
+    mockCodeEntity = const CodeEntity(
       title: 'any_title',
       code: 'any_code',
       codeImagePath: 'any_path',
@@ -46,6 +46,6 @@ void main() {
     localDatabaseSaveSpy.mockSaveError(Exception('any_exception'));
     final result = sut.call(param: mockCodeEntity);
 
-    expect(result, throwsA(LocalDatabaseError.saveError));
+    expect(result, throwsA(DomainError.localDatabaseError));
   });
 }

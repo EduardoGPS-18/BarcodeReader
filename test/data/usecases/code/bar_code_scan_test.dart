@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:barcode_reader/data/bar_code/bar_code.dart';
 import 'package:barcode_reader/data/usecases/usecases.dart';
+import 'package:barcode_reader/domain/error/domain_error.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -26,7 +26,7 @@ void main() {
     cameraScannerSpy.mockScanCallError(Exception("Any exception"));
 
     final result = sut.call(param: File('any_path'));
-    expect(result, throwsA(BarCodeError.scanError));
+    expect(result, throwsA(DomainError.codeScanError));
   });
 
   test('Should return valid data when DeviceCamScanner scan something...', () async {

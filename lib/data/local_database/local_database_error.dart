@@ -1,1 +1,1 @@
-enum LocalDatabaseError { saveError }
+enum LocalDatabaseError { saveError, loadError }
