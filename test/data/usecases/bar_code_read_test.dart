@@ -18,14 +18,14 @@ void main() {
   });
 
   test('Should call DeviceCamScanner dependency correctly ...', () async {
-    await sut.scanCode();
+    await sut.call();
     verify(() => cameraScannerSpy.scan()).called(1);
   });
 
   test('Should throw DeviceError.scanFailure if DeviceCamScanner throws...', () async {
     cameraScannerSpy.mockScanCallError(Exception("Any exception"));
 
-    final result = sut.scanCode();
+    final result = sut.call();
     expect(result, throwsA(DeviceError.scanFailure));
   });
 
@@ -33,7 +33,7 @@ void main() {
     final validFile = File('valid_path');
     cameraScannerSpy.mockScanCallSuccess(validFile);
 
-    final file = await sut.scanCode();
+    final file = await sut.call();
 
     expect(file, validFile);
   });
