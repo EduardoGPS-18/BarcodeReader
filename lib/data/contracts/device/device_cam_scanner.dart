@@ -1,3 +1,5 @@
+import 'dart:io';
+
 abstract class DeviceCamScanner {
-  Future<void> scan();
+  Future<File> scan();
 }
