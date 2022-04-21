@@ -1,3 +1,3 @@
-abstract class LocalDatabaseFetch<T> {
-  Future<T> readAll(String tableName);
+abstract class LocalDatabaseFetch {
+  Future<List<Map<String, dynamic>>> readAll(String tableName);
 }

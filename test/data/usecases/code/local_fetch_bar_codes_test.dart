@@ -5,15 +5,15 @@ import 'package:barcode_reader/domain/error/domain_error.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class LocalDatabaseFetchSpy<T> extends Mock implements LocalDatabaseFetch<T> {
+class LocalDatabaseFetchSpy extends Mock implements LocalDatabaseFetch {
   When mockReadAllCall() => when(() => readAll(any()));
-  void mockReadAllSuccess(T data) => mockReadAllCall().thenAnswer((_) async => data);
+  void mockReadAllSuccess(List<Map<String, dynamic>> data) => mockReadAllCall().thenAnswer((_) async => data);
   void mockReadAllError(dynamic err) => mockReadAllCall().thenThrow(err);
 }
 
 void main() {
   late final LocalFetchBarCodes sut;
-  late final LocalDatabaseFetchSpy<List<Map<String, dynamic>>> localDatabaseFetchSpy;
+  late final LocalDatabaseFetchSpy localDatabaseFetchSpy;
 
   setUpAll(() {
     localDatabaseFetchSpy = LocalDatabaseFetchSpy();
