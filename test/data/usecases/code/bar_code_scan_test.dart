@@ -5,7 +5,7 @@ import 'package:barcode_reader/data/usecases/usecases.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../mock/mock.dart';
+import '../../mock/mock.dart';
 
 void main() {
   late final BarCodeScan sut;
