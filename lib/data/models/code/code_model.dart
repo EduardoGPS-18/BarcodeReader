@@ -8,4 +8,12 @@ extension CodeModel on CodeEntity {
       'imagePath': codeImagePath,
     };
   }
+
+  static CodeEntity fromLocalMap(Map<String, dynamic> map) {
+    return CodeEntity(
+      title: map['title'],
+      code: map['code'],
+      codeImagePath: map['imagePath'],
+    );
+  }
 }
