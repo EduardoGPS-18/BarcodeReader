@@ -3,7 +3,7 @@ import 'package:flutter_qr_reader/flutter_qr_reader.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../home/widgets/widgets.dart';
-import '../shared/shared.dart';
+import 'widgets/widgets.dart';
 
 class ReadCodePage extends StatefulWidget {
   const ReadCodePage({Key? key}) : super(key: key);
