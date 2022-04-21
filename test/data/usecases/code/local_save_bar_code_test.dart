@@ -1,4 +1,5 @@
 import 'package:barcode_reader/data/local_database/local_database.dart';
+import 'package:barcode_reader/data/local_database/local_database_error.dart';
 import 'package:barcode_reader/data/usecases/code/code.dart';
 import 'package:barcode_reader/domain/entities/entities.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,7 +16,7 @@ class LocalDatabaseSaveSpy extends Mock implements LocalDatabaseSave {
 }
 
 void main() {
-  late final LocalDatabaseSave localDatabaseSaveSpy;
+  late final LocalDatabaseSaveSpy localDatabaseSaveSpy;
   late final LocalSaveBarCode sut;
   late final CodeEntity mockCodeEntity;
 
@@ -42,14 +43,9 @@ void main() {
   });
 
   test('Should throws if LocalStorageThrows...', () async {
-    await sut.call(param: mockCodeEntity);
+    localDatabaseSaveSpy.mockSaveError(Exception('any_exception'));
+    final result = sut.call(param: mockCodeEntity);
 
-    verify(
-      () => localDatabaseSaveSpy.save(table: 'codes', values: {
-        'title': mockCodeEntity.title,
-        'code': mockCodeEntity.code,
-        'imagePath': mockCodeEntity.codeImagePath,
-      }),
-    );
+    expect(result, throwsA(LocalDatabaseError.saveError));
   });
 }
