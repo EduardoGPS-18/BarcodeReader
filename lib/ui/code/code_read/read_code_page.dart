@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qr_reader/flutter_qr_reader.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../home/widgets/widgets.dart';
+import '../../home/widgets/widgets.dart';
 import 'widgets/widgets.dart';
 
 class ReadCodePage extends StatefulWidget {
