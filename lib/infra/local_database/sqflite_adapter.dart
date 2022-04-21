@@ -11,9 +11,9 @@ class SQFLiteAdapter implements LocalDatabaseFetch, LocalDatabaseSave {
     return _instance;
   }
 
-  Future<void> initialize() async {
-    _instance = this;
-    db = await openDatabase(
+  static Future<void> initialize() async {
+    _instance = SQFLiteAdapter();
+    _instance.db = await openDatabase(
       "app.db",
       version: 1,
       onCreate: (db, _) async {
