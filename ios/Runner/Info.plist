@@ -6,6 +6,12 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Barcode Reader</string>
+	
+	<key>io.flutter.embedded_views_preview</key>
+	<string>YES</string>
+	<key>NSCameraUsageDescription</key>
+	<string>The porpuse explaining why you will use the camera</string>
+
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
