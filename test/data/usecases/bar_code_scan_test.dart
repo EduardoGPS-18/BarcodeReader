@@ -8,12 +8,12 @@ import 'package:mocktail/mocktail.dart';
 import '../mock/mock.dart';
 
 void main() {
-  late final BarCodeRead sut;
+  late final BarCodeScan sut;
   late final BarCodeScannerSpy cameraScannerSpy;
 
   setUpAll(() {
     cameraScannerSpy = BarCodeScannerSpy();
-    sut = BarCodeRead(camScanner: cameraScannerSpy);
+    sut = BarCodeScan(camScanner: cameraScannerSpy);
     cameraScannerSpy.mockScanCallSuccess('any_data');
   });
 

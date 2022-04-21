@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:barcode_reader/data/bar_code/bar_code.dart';
-import 'package:barcode_reader/domain/usecases/code/read_code.dart';
+import 'package:barcode_reader/domain/usecases/code/scan_code.dart';
 
-class BarCodeRead implements ReadCodeUseCase {
+class BarCodeScan implements ScanCodeUseCase {
   final BarCodeScanner camScanner;
 
-  BarCodeRead({
+  BarCodeScan({
     required this.camScanner,
   });
 

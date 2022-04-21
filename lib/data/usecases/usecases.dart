@@ -1,1 +1,1 @@
-export 'bar_code_read.dart';
+export 'code/bar_code_scan.dart';
