@@ -1,3 +1,5 @@
+import 'package:barcode_reader/data/contracts/device/device_error.dart';
+
 import '../contracts/device/device.dart';
 
 class BarCodeRead {
@@ -8,6 +10,10 @@ class BarCodeRead {
   });
 
   Future<void> scanCode() async {
-    await camScanner.scan();
+    try {
+      await camScanner.scan();
+    } catch (err) {
+      throw DeviceError.scanFailure;
+    }
   }
 }

@@ -1,0 +1,1 @@
+enum DeviceError { scanFailure }
