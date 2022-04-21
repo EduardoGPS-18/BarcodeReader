@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:barcode_reader/data/contracts/device/device_error.dart';
+import 'package:barcode_reader/data/bar_code/bar_code.dart';
 import 'package:barcode_reader/data/usecases/usecases.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -9,32 +9,32 @@ import '../mock/mock.dart';
 
 void main() {
   late final BarCodeRead sut;
-  late final DeviceCamScannerSpy cameraScannerSpy;
+  late final BarCodeScannerSpy cameraScannerSpy;
 
   setUpAll(() {
-    cameraScannerSpy = DeviceCamScannerSpy();
+    cameraScannerSpy = BarCodeScannerSpy();
     sut = BarCodeRead(camScanner: cameraScannerSpy);
-    cameraScannerSpy.mockScanCallSuccess(File('validFile'));
+    cameraScannerSpy.mockScanCallSuccess('any_data');
   });
 
-  test('Should call DeviceCamScanner dependency correctly ...', () async {
-    await sut.call();
-    verify(() => cameraScannerSpy.scan()).called(1);
+  test('Should call DeviceCamScanner dependency with correct values ...', () async {
+    await sut.call(param: File('any_path'));
+    verify(() => cameraScannerSpy.scan('any_path')).called(1);
   });
 
   test('Should throw DeviceError.scanFailure if DeviceCamScanner throws...', () async {
     cameraScannerSpy.mockScanCallError(Exception("Any exception"));
 
-    final result = sut.call();
-    expect(result, throwsA(DeviceError.scanFailure));
+    final result = sut.call(param: File('any_path'));
+    expect(result, throwsA(BarCodeError.scanError));
   });
 
-  test('Should return File when DeviceCamScanner scan something...', () async {
-    final validFile = File('valid_path');
-    cameraScannerSpy.mockScanCallSuccess(validFile);
+  test('Should return valid data when DeviceCamScanner scan something...', () async {
+    const validData = "valid_data";
+    cameraScannerSpy.mockScanCallSuccess(validData);
 
-    final file = await sut.call();
+    final file = await sut.call(param: File('any_path'));
 
-    expect(file, validFile);
+    expect(file, validData);
   });
 }

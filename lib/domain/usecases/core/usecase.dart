@@ -1,5 +1,5 @@
 abstract class UseCase<IN, OUT> {
-  OUT call({IN params});
+  OUT call({required IN param});
 }
 
 abstract class WithoutInUseCase<OUT> {
@@ -7,5 +7,5 @@ abstract class WithoutInUseCase<OUT> {
 }
 
 abstract class WithoutOutUseCase<IN> {
-  void call({required IN params});
+  void call({required IN param});
 }

@@ -1,24 +1,22 @@
 import 'dart:io';
 
-import 'package:barcode_reader/data/contracts/device/device_error.dart';
+import 'package:barcode_reader/data/bar_code/bar_code.dart';
 import 'package:barcode_reader/domain/usecases/code/read_code.dart';
 
-import '../contracts/device/device.dart';
-
 class BarCodeRead implements ReadCodeUseCase {
-  final DeviceCamScanner camScanner;
+  final BarCodeScanner camScanner;
 
   BarCodeRead({
     required this.camScanner,
   });
 
   @override
-  Future<File> call() async {
+  Future<String> call({required File param}) async {
     try {
-      final file = await camScanner.scan();
-      return file;
+      final data = await camScanner.scan(param.path);
+      return data;
     } catch (err) {
-      throw DeviceError.scanFailure;
+      throw BarCodeError.scanError;
     }
   }
 }

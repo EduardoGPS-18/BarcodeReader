@@ -1,1 +1,1 @@
-export 'device_cam_scanner_spy.dart';
+export 'bar_code_scanner_spy.dart';
