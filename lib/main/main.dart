@@ -1,6 +1,8 @@
+import 'package:barcode_reader/infra/infra.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  SQFLiteAdapter.instance.initialize();
   runApp(const MyApp());
 }
 
