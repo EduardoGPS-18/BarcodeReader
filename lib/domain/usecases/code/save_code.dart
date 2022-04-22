@@ -1,4 +1,14 @@
-import 'package:barcode_reader/domain/entities/entities.dart';
 import 'package:barcode_reader/domain/usecases/core/core.dart';
 
-abstract class SaveCodeUseCase implements UseCase<CodeEntity, Future<void>> {}
+import '../../entities/entities.dart';
+
+abstract class SaveCodeUseCase implements UseCase<SaveCodeParams, Future<CodeEntity>> {}
+
+class SaveCodeParams {
+  final String title;
+  final String code;
+  SaveCodeParams({
+    required this.title,
+    required this.code,
+  });
+}

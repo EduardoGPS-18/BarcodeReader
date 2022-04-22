@@ -1,8 +1,8 @@
 abstract class NavigationArguments {}
 
 class NavigateBack<T> implements NavigationArguments {
-  final T result;
-  NavigateBack({required this.result});
+  final T? result;
+  NavigateBack({this.result});
 }
 
 class NavigateForward implements NavigationArguments {
@@ -11,10 +11,12 @@ class NavigateForward implements NavigationArguments {
   NavigateForward({required this.route});
 }
 
-class NavigateReplace extends NavigateForward {
-  NavigateReplace({required String route}) : super(route: route);
+class NavigateReplace extends NavigationArguments {
+  final String route;
+  NavigateReplace({required this.route});
 }
 
-class NavigateAndClearStack extends NavigateForward {
-  NavigateAndClearStack({required String route}) : super(route: route);
+class NavigateAndClearStack extends NavigationArguments {
+  final String route;
+  NavigateAndClearStack({required this.route});
 }

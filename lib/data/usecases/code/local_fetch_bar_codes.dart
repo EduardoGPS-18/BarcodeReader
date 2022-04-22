@@ -6,7 +6,7 @@ import 'package:barcode_reader/domain/usecases/code/fetch_code.dart';
 
 import '../../models/error/error.dart';
 
-class LocalFetchBarCodes implements FetchBarCode {
+class LocalFetchBarCodes implements FetchBarCodes {
   LocalDatabaseFetch localDatabaseFetch;
 
   LocalFetchBarCodes({

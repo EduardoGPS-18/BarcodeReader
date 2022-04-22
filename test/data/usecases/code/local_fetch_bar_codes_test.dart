@@ -45,15 +45,23 @@ void main() {
 
   test('Should return a list of CodeEntity on succeed...', () async {
     final storageData = <Map<String, dynamic>>[
-      {'title': "any_title", 'code': 'any_code', 'imagePath': 'any_path'},
-      {'title': "any_title_2", 'code': 'any_code_2', 'imagePath': 'any_path_2'},
+      {'title': "any_title", 'code': 'any_code', 'id': 0},
+      {'title': "any_title_2", 'code': 'any_code_2', 'id': 5},
     ];
     localDatabaseFetchSpy.mockReadAllSuccess(storageData);
     final result = await sut.call();
 
     expect(result, [
-      const CodeEntity(title: 'any_title', code: 'any_code', codeImagePath: 'any_path'),
-      const CodeEntity(title: 'any_title_2', code: 'any_code_2', codeImagePath: 'any_path_2'),
+      const CodeEntity(
+        title: 'any_title',
+        code: 'any_code',
+        id: 0,
+      ),
+      const CodeEntity(
+        title: 'any_title_2',
+        code: 'any_code_2',
+        id: 5,
+      ),
     ]);
   });
 }

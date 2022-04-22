@@ -4,22 +4,29 @@ import 'package:flutter/material.dart';
 mixin UINavigationManager<T extends StatefulWidget> on State<T> {
   Stream<NavigationArguments> get navigateToStream;
 
+  void onReciveDataFromNextPage(dynamic data) {
+    debugPrint("You recive this implement $this method on page!");
+  }
+
   @override
   void initState() {
     super.initState();
-    navigateToStream.listen((navArgs) {
+    navigateToStream.listen((navArgs) async {
       if (navArgs is NavigateBack) {
         Navigator.of(context).pop(navArgs.result);
+        return;
       }
+      dynamic result;
       if (navArgs is NavigateForward) {
-        Navigator.of(context).pushNamed(navArgs.route);
+        result = await Navigator.of(context).pushNamed(navArgs.route);
       }
       if (navArgs is NavigateReplace) {
-        Navigator.of(context).pushReplacementNamed(navArgs.route);
+        result = await Navigator.of(context).pushReplacementNamed(navArgs.route);
       }
       if (navArgs is NavigateAndClearStack) {
-        Navigator.of(context).pushNamedAndRemoveUntil(navArgs.route, (route) => false);
+        result = await Navigator.of(context).pushNamedAndRemoveUntil(navArgs.route, (route) => false);
       }
+      onReciveDataFromNextPage(result);
     });
   }
 }
