@@ -1,3 +1,4 @@
+import 'package:barcode_reader/ui/code/read_barcode/read_barcode_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_qr_reader/flutter_qr_reader.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -6,7 +7,12 @@ import '../../home/widgets/widgets.dart';
 import 'widgets/widgets.dart';
 
 class ReadBarcodePage extends StatefulWidget {
-  const ReadBarcodePage({Key? key}) : super(key: key);
+  final ReadBarcodePresenter presenter;
+
+  const ReadBarcodePage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
 
   @override
   State<ReadBarcodePage> createState() => _ReadBarcodePageState();
