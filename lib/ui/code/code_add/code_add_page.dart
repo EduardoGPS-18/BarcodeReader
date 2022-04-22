@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/widgets.dart';
+
 class CodeAddPage extends StatefulWidget {
   const CodeAddPage({Key? key}) : super(key: key);
 
@@ -30,22 +32,11 @@ class _CodeAddPageState extends State<CodeAddPage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.camera_alt_outlined,
-                    size: 32,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                const Expanded(
-                  child: TextField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      hintText: 'Barcode value',
-                    ),
-                  ),
+              children: const [
+                CameraButtonWidget(),
+                SizedBox(width: 12),
+                Expanded(
+                  child: ValuePresentation(),
                 ),
               ],
             ),
