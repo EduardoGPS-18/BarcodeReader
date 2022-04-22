@@ -1,4 +1,5 @@
 import 'package:barcode_reader/domain/entities/code/code_entity.dart';
+import 'package:barcode_reader/main/settings/app_routes.dart';
 import 'package:barcode_reader/presentation/helpers/navigation_arguments.dart';
 import 'package:barcode_reader/presentation/helpers/presenter_navigation_manager.dart';
 import 'package:barcode_reader/ui/home/home_presenter.dart';
@@ -11,6 +12,6 @@ class GetxHomePresenter extends GetxController with PresenterNavigationManager i
 
   @override
   void navigateToAddCodePage() {
-    navigateToWithArguments = NavigateForward(route: '');
+    navigateToWithArguments = NavigateForward(route: AppRoutes.addBarCodePage);
   }
 }

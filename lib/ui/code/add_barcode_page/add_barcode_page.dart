@@ -1,9 +1,15 @@
+import 'package:barcode_reader/ui/code/add_barcode_page/add_barcode_presenter.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/widgets.dart';
 
 class AddBarcodePage extends StatefulWidget {
-  const AddBarcodePage({Key? key}) : super(key: key);
+  final AddBarcodePresenter presenter;
+
+  const AddBarcodePage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
 
   @override
   State<AddBarcodePage> createState() => _CodeAddPageState();

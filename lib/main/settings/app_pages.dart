@@ -5,6 +5,8 @@ import 'package:barcode_reader/main/settings/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class AppPages {
+  static String get initialPage => AppRoutes.homePage;
+
   static Map<String, Widget Function(BuildContext)> get pages => {
         AppRoutes.homePage: (ctx) => makeHomePage(),
         AppRoutes.addBarCodePage: (ctx) => makeAddBarcodePage(),
