@@ -2,7 +2,7 @@ import 'package:barcode_reader/domain/entities/entities.dart';
 import 'package:flutter/material.dart';
 
 class BarCodeWidget extends StatelessWidget {
-  final VoidCallback? onTap;
+  final void Function(CodeEntity code)? onTap;
   final void Function(CodeEntity code)? onDismissed;
   final CodeEntity code;
 
@@ -34,37 +34,40 @@ class BarCodeWidget extends StatelessWidget {
       key: GlobalKey(),
       onDismissed: (_) => onDismissed?.call(code),
       child: Card(
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      code.title,
-                      style: const TextStyle(
-                        fontFamily: 'roboto',
-                        fontWeight: FontWeight.w300,
-                        fontSize: 24,
+        child: InkWell(
+          onTap: () => onTap?.call(code),
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        code.title,
+                        style: const TextStyle(
+                          fontFamily: 'roboto',
+                          fontWeight: FontWeight.w300,
+                          fontSize: 24,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      code.code,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w300,
+                      const SizedBox(height: 16),
+                      Text(
+                        code.code,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w300,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: onTap,
-                icon: const Icon(Icons.forward),
-              )
-            ],
+                IconButton(
+                  onPressed: () => onTap?.call(code),
+                  icon: const Icon(Icons.forward),
+                )
+              ],
+            ),
           ),
         ),
         elevation: 8,

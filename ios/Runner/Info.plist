@@ -12,6 +12,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>The porpuse explaining why you will use the camera</string>
 	
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>https</string>
+	<string>http</string>
+	</array>
+
+	
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

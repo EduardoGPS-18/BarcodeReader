@@ -2,6 +2,7 @@ import 'package:barcode_reader/domain/entities/code/code_entity.dart';
 import 'package:barcode_reader/domain/usecases/code/delete_code.dart';
 import 'package:barcode_reader/domain/usecases/code/fetch_code.dart';
 import 'package:barcode_reader/domain/usecases/code/save_code.dart';
+import 'package:barcode_reader/domain/usecases/launch/launch.dart';
 import 'package:barcode_reader/main/settings/app_routes.dart';
 import 'package:barcode_reader/presentation/helpers/navigation_arguments.dart';
 import 'package:barcode_reader/presentation/helpers/presenter_navigation_manager.dart';
@@ -13,10 +14,13 @@ class GetxHomePresenter extends GetxController with PresenterNavigationManager i
   final DeleteBarCode deleteBarCode;
   final SaveCodeUseCase saveCodeUseCase;
 
+  final LauncherUsecase<String> launcherUsecase;
+
   GetxHomePresenter({
     required this.fetchBarCodes,
     required this.deleteBarCode,
     required this.saveCodeUseCase,
+    required this.launcherUsecase,
   });
 
   final _undoDelete = Rx<CodeEntity?>(null);
@@ -54,5 +58,10 @@ class GetxHomePresenter extends GetxController with PresenterNavigationManager i
   Future<void> reInsertCode(CodeEntity code) async {
     await saveCodeUseCase.call(param: SaveCodeParams(title: code.title, code: code.code));
     _barcodesController.value = [..._barcodesController.value, code];
+  }
+
+  @override
+  Future<void> launch(CodeEntity code) async {
+    await launcherUsecase.call(param: LauncherParam(toLaunch: code.code));
   }
 }

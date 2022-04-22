@@ -9,6 +9,7 @@ abstract class HomePresenter with PresenterNavigationManagerI {
 
   void addCode(CodeEntity code);
 
+  Future<void> launch(CodeEntity code);
   Future<void> loadCodes();
   Future<void> deleteCode(CodeEntity code);
   Future<void> reInsertCode(CodeEntity code);

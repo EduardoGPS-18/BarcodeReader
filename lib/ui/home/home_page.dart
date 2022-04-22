@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> with UINavigationManager {
                     padding: const EdgeInsets.all(8.0),
                     child: BarCodeWidget(
                       code: codes![index],
-                      onTap: () {},
+                      onTap: widget.presenter.launch,
                       onDismissed: widget.presenter.deleteCode,
                     ),
                   );
