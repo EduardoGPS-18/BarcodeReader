@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BarCodeWidget extends StatelessWidget {
-  const BarCodeWidget({Key? key}) : super(key: key);
+  final VoidCallback? onTap;
+
+  const BarCodeWidget({
+    Key? key,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,7 @@ class BarCodeWidget extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: onTap,
               icon: const Icon(Icons.forward),
             )
           ],

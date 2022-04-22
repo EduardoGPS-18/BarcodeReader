@@ -1,8 +1,24 @@
+import 'package:barcode_reader/presentation/helpers/navigation_arguments.dart';
+import 'package:barcode_reader/ui/helpers/ui_navigation_manager.dart';
+import 'package:barcode_reader/ui/home/home_presenter.dart';
 import 'package:barcode_reader/ui/home/widgets/bar_code_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  final HomePresenter presenter;
+
+  const HomePage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with UINavigationManager {
+  @override
+  Stream<NavigationArguments> get navigateToStream => widget.presenter.navigationStream;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +42,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 16.0, bottom: 16.0),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: widget.presenter.navigateToAddCodePage,
           child: const Icon(Icons.add),
         ),
       ),

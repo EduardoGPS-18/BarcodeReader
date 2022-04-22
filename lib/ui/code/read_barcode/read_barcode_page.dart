@@ -5,14 +5,14 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../home/widgets/widgets.dart';
 import 'widgets/widgets.dart';
 
-class ReadCodePage extends StatefulWidget {
-  const ReadCodePage({Key? key}) : super(key: key);
+class ReadBarcodePage extends StatefulWidget {
+  const ReadBarcodePage({Key? key}) : super(key: key);
 
   @override
-  State<ReadCodePage> createState() => _ReadCodePageState();
+  State<ReadBarcodePage> createState() => _ReadBarcodePageState();
 }
 
-class _ReadCodePageState extends State<ReadCodePage> {
+class _ReadBarcodePageState extends State<ReadBarcodePage> {
   bool isStopped = false;
   late final QrReaderViewController controller;
 

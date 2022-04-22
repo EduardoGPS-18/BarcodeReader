@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'widgets/widgets.dart';
 
-class CodeAddPage extends StatefulWidget {
-  const CodeAddPage({Key? key}) : super(key: key);
+class AddBarcodePage extends StatefulWidget {
+  const AddBarcodePage({Key? key}) : super(key: key);
 
   @override
-  State<CodeAddPage> createState() => _CodeAddPageState();
+  State<AddBarcodePage> createState() => _CodeAddPageState();
 }
 
-class _CodeAddPageState extends State<CodeAddPage> {
+class _CodeAddPageState extends State<AddBarcodePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

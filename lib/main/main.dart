@@ -1,5 +1,5 @@
 import 'package:barcode_reader/infra/infra.dart';
-import 'package:barcode_reader/ui/code/code_add/code_add_page.dart';
+import 'package:barcode_reader/main/settings/app_pages.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CodeAddPage(),
+      routes: AppPages.pages,
     );
   }
 }
