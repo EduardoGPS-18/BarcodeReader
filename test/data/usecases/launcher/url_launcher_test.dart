@@ -1,30 +1,17 @@
-import 'package:barcode_reader/data/local_launcher/local_launcher.dart';
 import 'package:barcode_reader/data/usecases/launcher/url_launcher.dart';
 import 'package:barcode_reader/domain/error/domain_error.dart';
 import 'package:barcode_reader/domain/usecases/launch/launch.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class LocalLauncherSpy extends Mock implements LocalLauncher {
-  LocalLauncherSpy() {
-    mockLaunchSuccess();
-    mockCanLaunchSuccess(true);
-  }
-  When mockCanLaunchCall() => when(() => canLaunch(any()));
-  void mockCanLaunchSuccess(bool result) => mockCanLaunchCall().thenAnswer((_) async => result);
-  void mockCanLaunchError(dynamic err) => mockCanLaunchCall().thenThrow(err);
-
-  When mockLaunchCall() => when(() => launch(any()));
-  void mockLaunchSuccess() => mockLaunchCall().thenAnswer((_) async => _);
-  void mockLaunchError(dynamic err) => mockLaunchCall().thenThrow(err);
-}
+import '../../mocks/launch/launcher_spy.dart';
 
 void main() {
-  late final LocalLauncherSpy localLauncher;
+  late final LauncherSpy localLauncher;
   late final UrlLauncher sut;
 
   setUpAll(() {
-    localLauncher = LocalLauncherSpy();
+    localLauncher = LauncherSpy();
     sut = UrlLauncher(localLauncher: localLauncher);
   });
 

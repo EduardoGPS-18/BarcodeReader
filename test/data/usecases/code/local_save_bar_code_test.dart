@@ -1,4 +1,3 @@
-import 'package:barcode_reader/data/local_database/local_database.dart';
 import 'package:barcode_reader/data/usecases/code/code.dart';
 import 'package:barcode_reader/domain/entities/entities.dart';
 import 'package:barcode_reader/domain/error/domain_error.dart';
@@ -6,15 +5,7 @@ import 'package:barcode_reader/domain/usecases/code/save_code.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class LocalDatabaseSaveSpy extends Mock implements LocalDatabaseSave {
-  LocalDatabaseSaveSpy() {
-    mockSaveSuccess(0);
-  }
-
-  When mockSaveCall() => when(() => save(table: any(named: 'table'), values: any(named: 'values')));
-  void mockSaveSuccess(int result) => mockSaveCall().thenAnswer((_) async => result);
-  void mockSaveError(dynamic err) => mockSaveCall().thenThrow(err);
-}
+import '../../mocks/local_database/local_database_save_spy.dart';
 
 void main() {
   late final LocalDatabaseSaveSpy localDatabaseSaveSpy;

@@ -1,15 +1,10 @@
-import 'package:barcode_reader/data/local_database/local_database_fetch.dart';
 import 'package:barcode_reader/data/usecases/code/local_fetch_bar_codes.dart';
 import 'package:barcode_reader/domain/entities/entities.dart';
 import 'package:barcode_reader/domain/error/domain_error.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class LocalDatabaseFetchSpy extends Mock implements LocalDatabaseFetch {
-  When mockReadAllCall() => when(() => readAll(any()));
-  void mockReadAllSuccess(List<Map<String, dynamic>> data) => mockReadAllCall().thenAnswer((_) async => data);
-  void mockReadAllError(dynamic err) => mockReadAllCall().thenThrow(err);
-}
+import '../../mocks/local_database/local_database_fetch_spy.dart';
 
 void main() {
   late final LocalFetchBarCodes sut;
