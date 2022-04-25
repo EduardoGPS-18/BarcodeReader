@@ -34,7 +34,7 @@ void main() {
     verify(() => localLauncher.launch('any_url')).called(1);
   });
 
-  test("Should'nt call launch when canLaunch fails correctly ...", () async {
+  test("Shouldn't call launch when canLaunch fails...", () async {
     localLauncher.mockCanLaunchSuccess(false);
 
     sut.call(param: LauncherParam(toLaunch: 'any_url'));
@@ -43,7 +43,7 @@ void main() {
     verifyNever(() => localLauncher.launch('any_url'));
   });
 
-  test('Should throws LaunchError throws ...', () async {
+  test('Should throws if LaunchError throws ...', () async {
     localLauncher.mockCanLaunchError(Exception('any_exception'));
     final result = sut.call(param: LauncherParam(toLaunch: 'any_url'));
     expect(result, throwsA(DomainError.launchError));

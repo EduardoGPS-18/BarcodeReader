@@ -29,12 +29,13 @@ void main() {
 
   test('Should throws if LocalDatabaseFetch throws...', () async {
     localDatabaseFetchSpy.mockReadAllError(Exception('any_exception'));
+
     final result = sut.call();
 
     expect(result, throwsA(DomainError.localDatabaseError));
   });
 
-  test('Should throws on missing key throws...', () async {
+  test('Should throws on missing key error...', () async {
     localDatabaseFetchSpy.mockReadAllSuccess([
       {'title': 'any_title', 'INVALIDKEY': 'any_code', 'imagePath': 'invalidPath'}
     ]);

@@ -45,8 +45,9 @@ void main() {
     expect(result, throwsA(DomainError.localDatabaseError));
   });
 
-  test('Should returns an ...', () async {
+  test('Should returns CodeEntity on succeed ...', () async {
     localDatabaseSaveSpy.mockSaveSuccess(5);
+
     final result = await sut.call(param: mockSaveParams);
 
     expect(result, CodeEntity(id: 5, title: mockSaveParams.title, code: mockSaveParams.code));
