@@ -46,7 +46,7 @@ class _CodeAddPageState extends State<AddBarcodePage> with UINavigationManager {
             child: TextField(
               onChanged: widget.presenter.validateTitle,
               decoration: const InputDecoration(
-                hintText: "Video link",
+                hintText: "Ex: Video link",
                 labelText: "Barcode title",
               ),
             ),
@@ -62,6 +62,7 @@ class _CodeAddPageState extends State<AddBarcodePage> with UINavigationManager {
                 Expanded(
                   child: ValuePresentation(
                     controller: textEditingController,
+                    onTap: widget.presenter.navigateToReadCodePage,
                   ),
                 ),
               ],

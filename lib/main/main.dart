@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SQFLiteAdapter.initialize();
+
   runApp(const MyApp());
 }
 
